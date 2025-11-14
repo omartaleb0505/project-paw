@@ -8,325 +8,266 @@
   <style>
         body {
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            font-family: 'Inter', 'Poppins', sans-serif;
-            background: #0f172a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100%;
         }
 
-        * {
-            box-sizing: border-box;
-        }
-
-        .navbar {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            padding: 1.5rem 2rem;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
-            border-bottom: 2px solid #3b82f6;
-        }
-
-        .navbar-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .navbar-brand {
-            color: #60a5fa;
-            font-size: 1.75rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            text-shadow: 0 2px 10px rgba(96, 165, 250, 0.3);
-        }
-
-        .navbar-links {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .navbar-links a {
-            color: #cbd5e1;
-            text-decoration: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-
-        .navbar-links a:hover {
-            background-color: rgba(59, 130, 246, 0.2);
-            color: #60a5fa;
-            transform: translateY(-2px);
-        }
-
-        .navbar-links a.active {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        html {
+            height: 100%;
         }
 
         .container {
-            max-width: 1500px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        .page {
-            display: none;
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-            border: 1px solid rgba(59, 130, 246, 0.2);
+        /* Navigation Bar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
-        .page.active {
-            display: block;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h1 {
-            color: #f1f5f9;
-            margin-bottom: 1.5rem;
-            border-bottom: 3px solid #3b82f6;
-            padding-bottom: 0.75rem;
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        h2 {
-            color: #cbd5e1;
-            margin-top: 2rem;
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4a5568;
             margin-bottom: 1rem;
-            font-weight: 600;
         }
 
-        .table-container {
-            overflow-x: auto;
-            margin-top: 1.5rem;
-            border-radius: 12px;
-            background: rgba(15, 23, 42, 0.5);
-            padding: 1rem;
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin-top: 1rem;
+        .nav-link {
+            padding: 0.5rem 1rem;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
             font-size: 0.9rem;
         }
 
-        th {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            color: white;
-            padding: 1rem 0.75rem;
-            text-align: left;
-            font-weight: 600;
-            white-space: nowrap;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 0.5px;
+        .nav-link:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
         }
 
-        th:first-child {
-            border-top-left-radius: 10px;
+        .nav-link.active {
+            background: #4c51bf;
         }
 
-        th:last-child {
-            border-top-right-radius: 10px;
+        /* Content Sections */
+        .content-section {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
         }
 
-        td {
-            padding: 1rem 0.75rem;
-            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
-            color: #cbd5e1;
-            background: rgba(30, 41, 59, 0.5);
+        .content-section.active {
+            display: block;
         }
 
-        tr:hover td {
-            background: rgba(59, 130, 246, 0.1);
+        .section-title {
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            text-align: center;
         }
 
-        .attendance-green {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%) !important;
-            border-left: 4px solid #10b981;
-        }
-
-        .attendance-yellow {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(217, 119, 6, 0.2) 100%) !important;
-            border-left: 4px solid #f59e0b;
-        }
-
-        .attendance-red {
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(220, 38, 38, 0.2) 100%) !important;
-            border-left: 4px solid #ef4444;
-        }
-
-        .checkmark {
-            color: #10b981;
-            font-size: 1.3rem;
-            filter: drop-shadow(0 2px 4px rgba(16, 185, 129, 0.4));
+        /* Form Styles */
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         .form-group {
             margin-bottom: 1.5rem;
         }
 
-        label {
+        .form-label {
             display: block;
             margin-bottom: 0.5rem;
-            color: #cbd5e1;
             font-weight: 600;
-            font-size: 0.9rem;
+            color: #4a5568;
         }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="number"] {
+        .form-input {
             width: 100%;
-            padding: 0.9rem;
-            border: 2px solid rgba(59, 130, 246, 0.3);
-            border-radius: 10px;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
             font-size: 1rem;
-            transition: all 0.3s;
-            background: rgba(15, 23, 42, 0.5);
-            color: #f1f5f9;
+            transition: border-color 0.3s ease;
         }
 
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="number"]:focus {
+        .form-input:focus {
             outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+            border-color: #667eea;
         }
 
-        .btn {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        .error-message {
+            color: #e53e3e;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: #667eea;
             color: white;
-            padding: 0.9rem 2.5rem;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
         }
 
-        .btn:hover {
+        .submit-btn:hover {
+            background: #5a67d8;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
         }
 
-        .success-message {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%);
-            color: #6ee7b7;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-top: 1rem;
-            display: none;
-            border-left: 4px solid #10b981;
+        .submit-btn:disabled {
+            background: #a0aec0;
+            cursor: not-allowed;
+            transform: none;
         }
 
-        .home-card {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            color: white;
-            padding: 4rem 3rem;
-            border-radius: 20px;
-            text-align: center;
+        /* Table Styles */
+        .table-container {
+            overflow-x: auto;
             margin-bottom: 2rem;
-            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .home-card h1 {
+        .attendance-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .attendance-table th {
+            background: #4a5568;
             color: white;
-            border: none;
-            font-size: 3rem;
-            font-weight: 800;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            padding: 1rem 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.875rem;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
+        .attendance-table td {
+            padding: 0.75rem 0.5rem;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .attendance-table tbody tr:hover {
+            background: #f7fafc;
+        }
+
+        /* Row highlighting based on absences */
+        .good-attendance {
+            background-color: #c6f6d5 !important;
+        }
+
+        .warning-attendance {
+            background-color: #fefcbf !important;
+        }
+
+        .poor-attendance {
+            background-color: #fed7d7 !important;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #c6f6d5;
+            color: #22543d;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        /* Report Section */
+        .report-container {
             margin-top: 2rem;
         }
 
-        .stat-card {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            padding: 2rem;
-            border-radius: 16px;
-            text-align: center;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            color: #94a3b8;
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .message-column {
+        .report-btn {
+            background: #38a169;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
             font-weight: 600;
-            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
         }
 
+        .report-btn:hover {
+            background: #2f855a;
+            transform: translateY(-2px);
+        }
+
+        .report-results {
+            display: none;
+            background: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #38a169;
+        }
+
+        .report-item {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .report-number {
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .navbar-content {
-                flex-direction: column;
-                align-items: flex-start;
+            .container {
+                padding: 10px;
             }
 
-            .navbar-links {
-                flex-direction: column;
-                gap: 0.5rem;
-                width: 100%;
+            .nav-links {
+                justify-content: center;
             }
 
-            table {
-                font-size: 0.8rem;
+            .attendance-table {
+                font-size: 0.75rem;
             }
 
-            th, td {
-                padding: 0.6rem 0.4rem;
-            }
-
-            .home-card h1 {
-                font-size: 2rem;
+            .attendance-table th,
+            .attendance-table td {
+                padding: 0.5rem 0.25rem;
             }
         }
     </style>
@@ -335,65 +276,34 @@
   <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
  </head>
  <body>
-  <nav class="navbar">
-   <div class="navbar-content">
-    <div class="navbar-brand" id="systemTitle">
+  <div class="container"><!-- Navigation Bar -->
+   <nav class="navbar">
+    <div class="nav-brand" id="systemTitle">
      Student Attendance System
     </div>
-    <div class="navbar-links"><a href="#home" class="nav-link active" onclick="showPage('home')">Home</a> <a href="#attendance" class="nav-link" onclick="showPage('attendance')">Attendance List</a> <a href="#add-student" class="nav-link" onclick="showPage('add-student')">Add Student</a> <a href="#reports" class="nav-link" onclick="showPage('reports')">Reports</a> <a href="#logout" class="nav-link" onclick="handleLogout()">Logout</a>
+    <div class="nav-links"><button class="nav-link active" onclick="showSection('home')">Home</button> <button class="nav-link" onclick="showSection('attendance')">Attendance List</button> <button class="nav-link" onclick="showSection('add-student')">Add Student</button> <button class="nav-link" onclick="showSection('reports')">Reports</button> <button class="nav-link" onclick="logout()">Logout</button>
     </div>
-   </div>
-  </nav>
-  <div class="container">
-   <div id="home" class="page active">
-    <div class="home-card">
-     <h1 id="homeTitle">Welcome to Student Attendance System</h1>
-     <p id="institutionName" style="font-size: 1.2rem; margin-top: 1rem;">Your School Name</p>
+   </nav><!-- Home Section -->
+   <div id="home" class="content-section active">
+    <h1 class="section-title">Welcome to the Attendance System</h1>
+    <div style="text-align: center; color: #4a5568;">
+     <p><strong id="universityName">Algiers University Benyoucef Benkhedda</strong></p>
+     <p>Faculty of Science - Department of Computer Science</p>
+     <p><strong>Course:</strong> <span id="courseName">Advanced Web Programming</span></p>
+     <p><strong>Level:</strong> 3rd year Computer Science degree (ISIL)</p>
+     <p><strong>Academic year:</strong> 2025/2026</p>
     </div>
-    <div class="stats-grid">
-     <div class="stat-card">
-      <div class="stat-number" id="totalStudents">
-       3
-      </div>
-      <div class="stat-label">
-       Total Students
-      </div>
-     </div>
-     <div class="stat-card">
-      <div class="stat-number" id="goodAttendance">
-       1
-      </div>
-      <div class="stat-label">
-       Good Attendance
-      </div>
-     </div>
-     <div class="stat-card">
-      <div class="stat-number" id="warningStudents">
-       1
-      </div>
-      <div class="stat-label">
-       Warning Status
-      </div>
-     </div>
-     <div class="stat-card">
-      <div class="stat-number" id="excludedStudents">
-       1
-      </div>
-      <div class="stat-label">
-       Excluded Status
-      </div>
-     </div>
-    </div>
-   </div>
-   <div id="attendance" class="page">
-    <h1>Student Attendance List</h1>
-    <p style="color: #94a3b8; margin-bottom: 1rem;">Click on any cell to toggle attendance (S) or participation (P)</p>
+   </div><!-- Attendance List Section -->
+   <div id="attendance" class="content-section">
+    <h2 class="section-title">Student Attendance</h2>
     <div class="table-container">
-     <table id="attendanceTable">
+     <table class="attendance-table" id="attendanceTable">
       <thead>
        <tr>
+        <th>Student ID</th>
         <th>Last Name</th>
         <th>First Name</th>
+        <th>Email</th>
         <th>S1</th>
         <th>P1</th>
         <th>S2</th>
@@ -411,297 +321,372 @@
         <th>Message</th>
        </tr>
       </thead>
-      <tbody id="attendanceBody">
+      <tbody id="attendanceBody"><!-- Sample data will be populated by JavaScript -->
       </tbody>
      </table>
     </div>
-   </div>
-   <div id="add-student" class="page">
-    <h1>Add New Student</h1>
-    <form id="studentForm" onsubmit="handleSubmit(event)">
-     <div class="form-group"><label for="studentId">Student ID</label> <input type="number" id="studentId" name="studentId" required>
-     </div>
-     <div class="form-group"><label for="lastName">Last Name</label> <input type="text" id="lastName" name="lastName" required>
-     </div>
-     <div class="form-group"><label for="firstName">First Name</label> <input type="text" id="firstName" name="firstName" required>
-     </div>
-     <div class="form-group"><label for="email">Email</label> <input type="email" id="email" name="email" required>
-     </div><button type="submit" class="btn">Submit</button>
-     <div id="successMessage" class="success-message">
-      Student added successfully!
-     </div>
-    </form>
-   </div>
-   <div id="reports" class="page">
-    <h1>Attendance Reports</h1>
-    <h2>Summary Statistics</h2>
-    <div class="stats-grid">
-     <div class="stat-card">
-      <div class="stat-number">
-       33.3%
+    <div class="report-container"><button class="report-btn" onclick="generateReport()">Show Report</button>
+     <div class="report-results" id="reportResults">
+      <h3>Attendance Report</h3>
+      <div class="report-item">
+       Total Students: <span class="report-number" id="totalStudents">0</span>
       </div>
-      <div class="stat-label">
-       Good Attendance Rate
+      <div class="report-item">
+       Students Present (Latest Session): <span class="report-number" id="studentsPresent">0</span>
       </div>
-     </div>
-     <div class="stat-card">
-      <div class="stat-number">
-       33.3%
+      <div class="report-item">
+       Students Participated (Latest Session): <span class="report-number" id="studentsParticipated">0</span>
       </div>
-      <div class="stat-label">
-       Warning Rate
-      </div>
-     </div>
-     <div class="stat-card">
-      <div class="stat-number">
-       33.3%
-      </div>
-      <div class="stat-label">
-       Exclusion Rate
-      </div>
-     </div>
-     <div class="stat-card">
-      <div class="stat-number">
-       50%
-      </div>
-      <div class="stat-label">
-       Average Attendance
+      <div class="report-item">
+       Average Attendance Rate: <span class="report-number" id="attendanceRate">0%</span>
       </div>
      </div>
     </div>
-    <h2>Detailed Report</h2>
-    <div class="table-container">
-     <table>
-      <thead>
-       <tr>
-        <th>Student Name</th>
-        <th>Total Sessions</th>
-        <th>Present</th>
-        <th>Absent</th>
-        <th>Participation Count</th>
-        <th>Status</th>
-       </tr>
-      </thead>
-      <tbody id="reportBody">
-      </tbody>
-     </table>
+   </div><!-- Add Student Section -->
+   <div id="add-student" class="content-section">
+    <h2 class="section-title">Add New Student</h2>
+    <div class="success-message" id="successMessage">
+     Student added successfully!
+    </div>
+    <div class="form-container">
+     <form id="studentForm" onsubmit="addStudent(event)">
+      <div class="form-group"><label for="studentId" class="form-label">Student ID</label> <input type="text" id="studentId" class="form-input" placeholder="Enter student ID">
+       <div class="error-message" id="studentIdError">
+        Student ID must contain only numbers
+       </div>
+      </div>
+      <div class="form-group"><label for="lastName" class="form-label">Last Name</label> <input type="text" id="lastName" class="form-input" placeholder="Enter last name">
+       <div class="error-message" id="lastNameError">
+        Last name must contain only letters
+       </div>
+      </div>
+      <div class="form-group"><label for="firstName" class="form-label">First Name</label> <input type="text" id="firstName" class="form-input" placeholder="Enter first name">
+       <div class="error-message" id="firstNameError">
+        First name must contain only letters
+       </div>
+      </div>
+      <div class="form-group"><label for="email" class="form-label">Email</label> <input type="email" id="email" class="form-input" placeholder="Enter email address">
+       <div class="error-message" id="emailError">
+        Please enter a valid email address
+       </div>
+      </div><button type="submit" class="submit-btn">Add Student</button>
+     </form>
+    </div>
+   </div><!-- Reports Section -->
+   <div id="reports" class="content-section">
+    <h2 class="section-title">Detailed Reports</h2>
+    <div class="report-container"><button class="report-btn" onclick="generateDetailedReport()">Generate Detailed Report</button>
+     <div class="report-results" id="detailedReportResults">
+      <h3>Comprehensive Attendance Analysis</h3>
+      <div id="detailedReportContent"><!-- Detailed report content will be generated here -->
+      </div>
+     </div>
     </div>
    </div>
   </div>
   <script>
-        const students = [
+        // Sample student data
+        let students = [
             {
+                id: "001",
                 lastName: "Ahmed",
                 firstName: "Sara",
-                sessions: [false, true, false, false, false, true],
-                participation: [false, true, false, false, false, false]
+                email: "sara.ahmed@university.dz",
+                sessions: [false, true, false, true, false, true], // false = absent, true = present
+                participation: [false, true, false, false, false, true] // false = no participation, true = participated
             },
             {
+                id: "002",
                 lastName: "Yacine",
                 firstName: "Ali",
-                sessions: [true, true, true, true, true, true],
-                participation: [true, true, true, true, false, false]
+                email: "ali.yacine@university.dz",
+                sessions: [true, true, true, true, true, false],
+                participation: [true, true, false, true, true, false]
             },
             {
+                id: "003",
                 lastName: "Houcine",
                 firstName: "Rania",
+                email: "rania.houcine@university.dz",
                 sessions: [true, true, false, false, true, true],
                 participation: [false, true, false, false, true, false]
             }
         ];
 
+        // Configuration object for editable features
         const defaultConfig = {
             system_title: "Student Attendance System",
-            institution_name: "Your School Name"
+            course_name: "Advanced Web Programming",
+            university_name: "Algiers University Benyoucef Benkhedda"
         };
 
-        function calculateAttendance(student) {
-            const absences = student.sessions.filter(s => !s).length;
+        // Initialize the page
+        function initializePage() {
+            populateAttendanceTable();
+            calculateAttendanceStats();
+        }
+
+        // Show specific section
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Remove active class from all nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked nav link
+            event.target.classList.add('active');
+        }
+
+        // Populate attendance table
+        function populateAttendanceTable() {
+            const tbody = document.getElementById('attendanceBody');
+            tbody.innerHTML = '';
+            
+            students.forEach(student => {
+                const row = createStudentRow(student);
+                tbody.appendChild(row);
+            });
+        }
+
+        // Create student row
+        function createStudentRow(student) {
+            const row = document.createElement('tr');
+            
+            // Calculate absences and participation
+            const absences = student.sessions.filter(session => !session).length;
             const participations = student.participation.filter(p => p).length;
             
+            // Determine row color based on absences
             let rowClass = '';
             let message = '';
             
             if (absences < 3) {
-                rowClass = 'attendance-green';
-                if (participations >= 3) {
-                    message = 'Good attendance – Excellent participation';
-                } else {
-                    message = 'Good attendance – You need to participate more';
-                }
-            } else if (absences >= 3 && absences <= 4) {
-                rowClass = 'attendance-yellow';
-                if (participations >= 3) {
-                    message = 'Warning – attendance low – Good participation';
-                } else {
-                    message = 'Warning – attendance low – You need to participate more';
-                }
+                rowClass = 'good-attendance';
+                message = participations >= 4 ? 'Good attendance – Excellent participation' : 'Good attendance – You need to participate more';
+            } else if (absences <= 4) {
+                rowClass = 'warning-attendance';
+                message = 'Warning – attendance low – You need to participate more';
             } else {
-                rowClass = 'attendance-red';
+                rowClass = 'poor-attendance';
                 message = 'Excluded – too many absences – You need to participate more';
             }
             
-            return { absences, participations, rowClass, message };
+            row.className = rowClass;
+            
+            // Build row HTML
+            let rowHTML = `
+                <td>${student.id}</td>
+                <td>${student.lastName}</td>
+                <td>${student.firstName}</td>
+                <td>${student.email}</td>
+            `;
+            
+            // Add session and participation columns
+            for (let i = 0; i < 6; i++) {
+                rowHTML += `<td>${student.sessions[i] ? '✓' : ''}</td>`;
+                rowHTML += `<td>${student.participation[i] ? '✓' : ''}</td>`;
+            }
+            
+            rowHTML += `
+                <td>${absences} Abs</td>
+                <td>${participations} Par</td>
+                <td>${message}</td>
+            `;
+            
+            row.innerHTML = rowHTML;
+            return row;
         }
 
-        function renderAttendanceTable() {
-            const tbody = document.getElementById('attendanceBody');
-            tbody.innerHTML = '';
+        // Form validation
+        function validateForm() {
+            let isValid = true;
             
-            students.forEach((student, index) => {
-                const stats = calculateAttendance(student);
-                const row = document.createElement('tr');
-                row.className = stats.rowClass;
-                
-                let html = `
-                    <td>${student.lastName}</td>
-                    <td>${student.firstName}</td>
-                `;
-                
-                for (let i = 0; i < 6; i++) {
-                    html += `<td style="cursor: pointer; text-align: center;" onclick="toggleAttendance(${index}, ${i})">${student.sessions[i] ? '<span class="checkmark">✓</span>' : ''}</td>`;
-                    html += `<td style="cursor: pointer; text-align: center;" onclick="toggleParticipation(${index}, ${i})">${student.participation[i] ? '<span class="checkmark">✓</span>' : ''}</td>`;
-                }
-                
-                html += `
-                    <td><strong>${stats.absences} Abs</strong></td>
-                    <td><strong>${stats.participations} Par</strong></td>
-                    <td class="message-column">${stats.message}</td>
-                `;
-                
-                row.innerHTML = html;
-                tbody.appendChild(row);
+            // Validate Student ID
+            const studentId = document.getElementById('studentId').value;
+            const studentIdError = document.getElementById('studentIdError');
+            if (!studentId || !/^\d+$/.test(studentId)) {
+                studentIdError.style.display = 'block';
+                isValid = false;
+            } else {
+                studentIdError.style.display = 'none';
+            }
+            
+            // Validate Last Name
+            const lastName = document.getElementById('lastName').value;
+            const lastNameError = document.getElementById('lastNameError');
+            if (!lastName || !/^[a-zA-Z\s]+$/.test(lastName)) {
+                lastNameError.style.display = 'block';
+                isValid = false;
+            } else {
+                lastNameError.style.display = 'none';
+            }
+            
+            // Validate First Name
+            const firstName = document.getElementById('firstName').value;
+            const firstNameError = document.getElementById('firstNameError');
+            if (!firstName || !/^[a-zA-Z\s]+$/.test(firstName)) {
+                firstNameError.style.display = 'block';
+                isValid = false;
+            } else {
+                firstNameError.style.display = 'none';
+            }
+            
+            // Validate Email
+            const email = document.getElementById('email').value;
+            const emailError = document.getElementById('emailError');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+            
+            return isValid;
+        }
+
+        // Add student function
+        function addStudent(event) {
+            event.preventDefault();
+            
+            if (!validateForm()) {
+                return;
+            }
+            
+            // Get form values
+            const studentId = document.getElementById('studentId').value;
+            const lastName = document.getElementById('lastName').value;
+            const firstName = document.getElementById('firstName').value;
+            const email = document.getElementById('email').value;
+            
+            // Check if student ID already exists
+            if (students.some(student => student.id === studentId)) {
+                document.getElementById('studentIdError').textContent = 'Student ID already exists';
+                document.getElementById('studentIdError').style.display = 'block';
+                return;
+            }
+            
+            // Create new student object
+            const newStudent = {
+                id: studentId,
+                lastName: lastName,
+                firstName: firstName,
+                email: email,
+                sessions: [false, false, false, false, false, false], // All sessions initially absent
+                participation: [false, false, false, false, false, false] // No participation initially
+            };
+            
+            // Add to students array
+            students.push(newStudent);
+            
+            // Update attendance table
+            populateAttendanceTable();
+            
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+            
+            // Reset form
+            document.getElementById('studentForm').reset();
+            
+            // Hide all error messages
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.style.display = 'none';
             });
         }
 
-        function toggleAttendance(studentIndex, sessionIndex) {
-            students[studentIndex].sessions[sessionIndex] = !students[studentIndex].sessions[sessionIndex];
-            renderAttendanceTable();
-            updateStats();
-            renderReports();
+        // Calculate attendance statistics
+        function calculateAttendanceStats() {
+            // This function can be called to update any real-time stats
         }
 
-        function toggleParticipation(studentIndex, sessionIndex) {
-            students[studentIndex].participation[sessionIndex] = !students[studentIndex].participation[sessionIndex];
-            renderAttendanceTable();
-            updateStats();
-            renderReports();
-        }
-
-        function renderReports() {
-            const tbody = document.getElementById('reportBody');
-            tbody.innerHTML = '';
+        // Generate report
+        function generateReport() {
+            const totalStudents = students.length;
+            let studentsPresent = 0;
+            let studentsParticipated = 0;
+            let totalAttendanceRate = 0;
             
             students.forEach(student => {
-                const stats = calculateAttendance(student);
-                const present = 6 - stats.absences;
-                let status = '';
+                // Check latest session (session 6, index 5)
+                if (student.sessions[5]) studentsPresent++;
+                if (student.participation[5]) studentsParticipated++;
                 
-                if (stats.absences < 3) {
-                    status = 'Good';
-                } else if (stats.absences >= 3 && stats.absences <= 4) {
-                    status = 'Warning';
-                } else {
-                    status = 'Excluded';
-                }
-                
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${student.firstName} ${student.lastName}</td>
-                    <td>6</td>
-                    <td>${present}</td>
-                    <td>${stats.absences}</td>
-                    <td>${stats.participations}</td>
-                    <td><strong>${status}</strong></td>
-                `;
-                tbody.appendChild(row);
+                // Calculate individual attendance rate
+                const attendanceCount = student.sessions.filter(session => session).length;
+                totalAttendanceRate += (attendanceCount / 6) * 100;
             });
+            
+            const averageAttendanceRate = totalStudents > 0 ? (totalAttendanceRate / totalStudents).toFixed(1) : 0;
+            
+            // Update report display
+            document.getElementById('totalStudents').textContent = totalStudents;
+            document.getElementById('studentsPresent').textContent = studentsPresent;
+            document.getElementById('studentsParticipated').textContent = studentsParticipated;
+            document.getElementById('attendanceRate').textContent = averageAttendanceRate + '%';
+            
+            // Show report results
+            document.getElementById('reportResults').style.display = 'block';
         }
 
-        function updateStats() {
-            let good = 0, warning = 0, excluded = 0;
+        // Generate detailed report
+        function generateDetailedReport() {
+            let reportHTML = '';
             
             students.forEach(student => {
-                const stats = calculateAttendance(student);
-                if (stats.absences < 3) good++;
-                else if (stats.absences >= 3 && stats.absences <= 4) warning++;
-                else excluded++;
+                const absences = student.sessions.filter(session => !session).length;
+                const participations = student.participation.filter(p => p).length;
+                const attendanceRate = ((6 - absences) / 6 * 100).toFixed(1);
+                
+                reportHTML += `
+                    <div style="margin-bottom: 1rem; padding: 1rem; background: white; border-radius: 8px; border-left: 4px solid #667eea;">
+                        <strong>${student.firstName} ${student.lastName} (ID: ${student.id})</strong><br>
+                        Attendance Rate: ${attendanceRate}% | Absences: ${absences} | Participations: ${participations}<br>
+                        Email: ${student.email}
+                    </div>
+                `;
             });
             
-            document.getElementById('totalStudents').textContent = students.length;
-            document.getElementById('goodAttendance').textContent = good;
-            document.getElementById('warningStudents').textContent = warning;
-            document.getElementById('excludedStudents').textContent = excluded;
+            document.getElementById('detailedReportContent').innerHTML = reportHTML;
+            document.getElementById('detailedReportResults').style.display = 'block';
         }
 
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            document.getElementById(pageId).classList.add('active');
-            event.target.classList.add('active');
-            
-            if (pageId === 'attendance') {
-                renderAttendanceTable();
-            } else if (pageId === 'reports') {
-                renderReports();
-            } else if (pageId === 'home') {
-                updateStats();
+        // Logout function
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                // In a real application, this would redirect to login page
+                showSection('home');
             }
         }
 
-        function handleSubmit(event) {
-            event.preventDefault();
+        // Add real-time validation listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = ['studentId', 'lastName', 'firstName', 'email'];
+            inputs.forEach(inputId => {
+                document.getElementById(inputId).addEventListener('input', validateForm);
+            });
             
-            const formData = {
-                studentId: document.getElementById('studentId').value,
-                lastName: document.getElementById('lastName').value,
-                firstName: document.getElementById('firstName').value,
-                email: document.getElementById('email').value
-            };
-            
-            const successMsg = document.getElementById('successMessage');
-            successMsg.style.display = 'block';
-            
-            document.getElementById('studentForm').reset();
-            
-            setTimeout(() => {
-                successMsg.style.display = 'none';
-            }, 3000);
-        }
+            initializePage();
+        });
 
-        function handleLogout() {
-            const confirmed = document.createElement('div');
-            confirmed.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: linear-gradient(135deg, #1e293b 0%, #334155 100%); padding: 2rem; border-radius: 15px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); z-index: 1000; border: 1px solid rgba(59, 130, 246, 0.3);';
-            confirmed.innerHTML = `
-                <h3 style="margin-top: 0; color: #f1f5f9;">Logout successful!</h3>
-                <p style="color: #cbd5e1;">You have been logged out of the system.</p>
-            `;
-            document.body.appendChild(confirmed);
-            
-            setTimeout(() => {
-                confirmed.remove();
-            }, 2000);
-        }
-
-        async function onConfigChange(config) {
-            const systemTitle = config.system_title || defaultConfig.system_title;
-            const institutionName = config.institution_name || defaultConfig.institution_name;
-            
-            document.getElementById('systemTitle').textContent = systemTitle;
-            document.getElementById('homeTitle').textContent = `Welcome to ${systemTitle}`;
-            document.getElementById('institutionName').textContent = institutionName;
-        }
-
+        // Element SDK Configuration
         if (window.elementSdk) {
             window.elementSdk.init({
                 defaultConfig: defaultConfig,
-                onConfigChange: onConfigChange,
+                onConfigChange: async (config) => {
+                    document.getElementById('systemTitle').textContent = config.system_title || defaultConfig.system_title;
+                    document.getElementById('courseName').textContent = config.course_name || defaultConfig.course_name;
+                    document.getElementById('universityName').textContent = config.university_name || defaultConfig.university_name;
+                },
                 mapToCapabilities: (config) => ({
                     recolorables: [],
                     borderables: [],
@@ -710,14 +695,11 @@
                 }),
                 mapToEditPanelValues: (config) => new Map([
                     ["system_title", config.system_title || defaultConfig.system_title],
-                    ["institution_name", config.institution_name || defaultConfig.institution_name]
+                    ["course_name", config.course_name || defaultConfig.course_name],
+                    ["university_name", config.university_name || defaultConfig.university_name]
                 ])
             });
         }
-
-        renderAttendanceTable();
-        renderReports();
-        updateStats();
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99abe39e461e282d',t:'MTc2MjUwODYzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99e922b6369e2822',t:'MTc2MzE1MDg1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
